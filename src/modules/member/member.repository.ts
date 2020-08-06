@@ -6,10 +6,10 @@ import { Member } from './member.entity'
 @Injectable()
 export class MemberRepository {
 
-  constructor(
-    @InjectRepository(Member)
-    private readonly userRepository: Repository<Member>,
-  ) { }
+  // constructor(
+  //   @InjectRepository(Member)
+  //   private readonly userRepository: Repository<Member>,
+  // ) { }
 
   sayHenri(): string {
     return 'Hello Repository!';

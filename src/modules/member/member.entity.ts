@@ -52,22 +52,3 @@ export class MemberEntity {
     @Column()
     YTDSpending: number
 }
-
-export interface MemberEntityJSON {
-    MemberID: number
-    FirstName: string
-    LastName: string
-    Email: string
-    MobilePhone: string
-    DateOfBirth: Date
-    Password: string
-    RegistrationDate: Date
-    TierLevel: number
-    TierChangeDate: Date
-    VerfiedDate: Date
-    PointBalance: number
-    LifetimePointEarned: number
-    LifetimePointExpired: number
-    LifetimeSpending: number
-    YTDSpending: number
-}

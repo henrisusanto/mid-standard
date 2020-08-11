@@ -1,4 +1,4 @@
-export interface MemberRegistration {
+interface MemberRegistration {
     FirstName: string
     LastName: string
     Email: string
@@ -7,7 +7,7 @@ export interface MemberRegistration {
     Password: string
 }
 
-export interface MemberJSON {
+interface MemberJSON {
     MemberID: number
     FirstName: string
     LastName: string

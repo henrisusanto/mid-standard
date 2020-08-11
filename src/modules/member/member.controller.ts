@@ -1,5 +1,5 @@
 import { Controller, Post, Body } from '@nestjs/common'
-import { ApiBody } from '@nestjs/swagger';
+import { ApiResponse } from '@nestjs/swagger';
 import { MemberService } from './member.service'
 import { MemberRegistrationRequest, MemberRegistrationResponse } from './member.dto'
 import { Member } from './member.domain'
@@ -12,7 +12,7 @@ export class MemberController {
     ) { }
 
     @Post('register')
-    @ApiBody()
+    @ApiResponse({ status: 201, type: MemberRegistrationResponse})
     async MemberRegister(@Body() payload: MemberRegistrationRequest): Promise<MemberRegistrationResponse> {
         if (payload.password !== payload.confirm_password) return {
             status: false,
@@ -40,7 +40,7 @@ export class MemberController {
         } catch (error) {
             return {
                 status: false,
-                message: e.toString(),
+                message: error.toString(),
                 member_id: 0
             }
         }

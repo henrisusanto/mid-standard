@@ -10,6 +10,6 @@ import { DoubleValueAction } from './double-value.action';
 @Module({
     controllers:[MemberController],
     imports:[TypeOrmModule.forFeature([MemberEntity]), HooksModule],
-    providers: [MemberService, DoubleValueAction]
+    providers: [MemberService]
 })
 export class MemberModule {}

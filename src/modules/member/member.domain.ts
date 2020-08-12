@@ -5,6 +5,7 @@ interface MemberRegistration {
     MobilePhone: string
     DateOfBirth: Date
     Password: string
+    TierLevel: number
 }
 
 interface MemberJSON {
@@ -51,6 +52,7 @@ export class Member {
         this.MobilePhone = data.MobilePhone
         this.DateOfBirth = data.DateOfBirth
         this.Password = data.Password
+        this.TierLevel = data.TierLevel
     }
 
     fromJSON(data: MemberJSON): void {

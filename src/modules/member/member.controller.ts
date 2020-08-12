@@ -9,12 +9,16 @@ import {
 } from './member.dto'
 import { Member } from './member.domain'
 
+import { HooksService } from '@nestpack/hooks';
+import { GetActiveTiers } from './tier.hook'
+
 @Controller('member')
 @ApiTags('Member')
 export class MemberController {
 
     constructor(
-        private readonly service: MemberService
+        private readonly service: MemberService,
+        private readonly hooksService: HooksService
     ) { }
 
     @Post('register')
@@ -27,13 +31,24 @@ export class MemberController {
         }
 
         let member = new Member()
+        let TierLevel = 0
+
+        let { tiers } = await this.hooksService.runHook(new GetActiveTiers())
+        if (tiers.length > 0) {
+            tiers.sort((a, b) => {
+                return a.Level - b.Level
+            })
+            TierLevel = tiers[0].Id
+        }
+
         member.register({
             FirstName: payload.first_name,
             LastName: payload.last_name,
             Email: payload.email,
             MobilePhone: payload.mobile_phone,
             DateOfBirth: payload.date_of_birth,
-            Password: payload.password
+            Password: payload.password,
+            TierLevel
         })
 
         try {

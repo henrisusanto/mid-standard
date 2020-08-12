@@ -9,13 +9,25 @@ import {
 } from './member.dto'
 import { Member } from './member.domain'
 
+import { HooksService } from '@nestpack/hooks';
+import { ExampleHook } from './example.hook';
+
 @Controller('member')
 @ApiTags('Member')
 export class MemberController {
 
     constructor(
-        private readonly service: MemberService
+        private readonly service: MemberService,
+        private readonly hooksService: HooksService
     ) { }
+
+    @Get('hook')
+    async getValue() {
+        // Run the hook by passing an instance of the defined hook
+        const result = await this.hooksService.runHook(new ExampleHook());
+
+        return result.value;
+    }
 
     @Post('register')
     @ApiResponse({ status: 201, type: MemberRegistrationResponse })
@@ -27,6 +39,7 @@ export class MemberController {
         }
 
         let member = new Member()
+
         member.register({
             FirstName: payload.first_name,
             LastName: payload.last_name,

@@ -1,4 +1,4 @@
-interface TierJSON {
+export interface TierJSON {
     Id: number
     Name: string
     Level: number

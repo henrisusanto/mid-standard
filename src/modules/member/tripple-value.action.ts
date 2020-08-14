@@ -17,7 +17,8 @@ export class TrippleValueAction implements IHookAction {
         //simulate an async call
         await new Promise(r => setTimeout(r, 1000));
         //Optionally mutate data inside of the privded hook
-        hook.value = hook.value - 3;
+        // hook.value = hook.value - 3;
+        throw new Error (`I'm not works`)
 
         /**
          * Optional: return a new value to be passed to the next hook

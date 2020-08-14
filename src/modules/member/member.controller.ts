@@ -24,9 +24,9 @@ export class MemberController {
     @Get('hook')
     async getValue() {
         // Run the hook by passing an instance of the defined hook
-        const result = await this.hooksService.runHook(new ExampleHook());
+        this.hooksService.runHook(new ExampleHook());
 
-        return result.value;
+        return 123;
     }
 
     @Post('register')

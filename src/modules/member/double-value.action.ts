@@ -17,7 +17,8 @@ export class DoubleValueAction implements IHookAction {
         //simulate an async call
         await new Promise(r => setTimeout(r, 1000));
         //Optionally mutate data inside of the privded hook
-        hook.value = hook.value * 2;
+        // hook.value = hook.value * 2;
+        console.log(`I'm DoubleValueAction`)
 
         /**
          * Optional: return a new value to be passed to the next hook

@@ -1,6 +1,7 @@
 // Tripple-value.action.ts
 import { IHookAction, HookAction } from '@nestpack/hooks';
 import { ExampleHook } from './example.hook';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 /**
  * Apply the HookAction decorator with a reference to the actions
@@ -18,13 +19,19 @@ export class TrippleValueAction implements IHookAction {
         await new Promise(r => setTimeout(r, 1000));
         //Optionally mutate data inside of the privded hook
         // hook.value = hook.value - 3;
-        throw new Error (`I'm not works`)
+        try {
+            console.log(`------------- I'm TrippleValueAction`)
+            throw new Error (`I'm not works`)
+            return hook
+        } catch (e) {
+            return hook
+        }
 
         /**
          * Optional: return a new value to be passed to the next hook
          *
          * After all hooks are run, the final value is passed back to runHook
          */
-        return hook;
+        // return hook;
     }
 }

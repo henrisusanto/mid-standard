@@ -11,6 +11,6 @@ import { TrippleValueAction } from './tripple-value.action'
 @Module({
     controllers:[MemberController],
     imports:[TypeOrmModule.forFeature([MemberEntity]), HooksModule],
-    providers: [MemberService, DoubleValueAction, TrippleValueAction]
+    providers: [MemberService, TrippleValueAction, DoubleValueAction]
 })
 export class MemberModule {}

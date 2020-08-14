@@ -6,10 +6,11 @@ import { MemberEntity } from './member.entity'
 
 import { HooksModule } from '@nestpack/hooks';
 import { DoubleValueAction } from './double-value.action';
+import { TrippleValueAction } from './tripple-value.action'
 
 @Module({
     controllers:[MemberController],
     imports:[TypeOrmModule.forFeature([MemberEntity]), HooksModule],
-    providers: [MemberService, DoubleValueAction]
+    providers: [MemberService, DoubleValueAction, TrippleValueAction]
 })
 export class MemberModule {}
